@@ -1,0 +1,7 @@
+@media (min-width: 999px){ 
+    @import "style_desktop.scss";
+}
+
+@media (max-width: 1000px){
+    @import "style_mobile.scss";
+}

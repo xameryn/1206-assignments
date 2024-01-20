@@ -1,0 +1,385 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+// Variables
+$primary-color: rgb(36, 53, 92);
+$primary-highlight: rgb(28, 35, 49);
+$secondary-color: rgb(66, 133, 244);
+$tertiary-color: rgb(22, 28, 39);
+$grey-accent: #6d6d6d;
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+hr {
+    width: 80%;
+    color: $grey-accent;
+}
+
+article {
+    z-index: 2;
+    align-self: center;
+    overflow: hidden;
+    justify-self: center;
+    text-align: center;
+}
+
+nav {
+    width: 100vw;
+    position: fixed;
+    bottom: 0; // Put on bottom for easier thumb-access
+    background-color: rgba($primary-color, 0.3);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    z-index: 3;
+    height: 120px;
+
+    ul {
+        width: 90%;
+        display: flex;
+        padding-left: 5%;
+        justify-content: space-between;
+        align-items: center;
+        li {
+            display: inline-block;
+            padding-top: 1.4vh;
+            transition: padding-top 0.3s;
+            a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 2em;
+            }
+        }
+    }
+
+    transition: height 0.3s, background-color 0.3s;
+    &.scrolled {
+        background-color: $primary-color;
+        height: 50px;
+
+        ul {
+            li {
+                padding-top: 0vh;
+            }
+        }
+    }
+
+    // Add drop down menu ?
+}
+
+.travel {
+    display: flex;
+    justify-content: center;
+    background-image: url('./assets/images/background_1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #fff;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.65); // background darkness scale
+        z-index: 1;
+    }
+
+    article {
+        width: 50%;
+
+        h1 {
+            font-size: 3em;
+        }
+
+        p {
+            font-size: 1.5em;
+        }    
+    }
+}
+
+.features {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #ffffff;
+    margin: 5%;
+    margin-top: 0;
+
+    .features-title {
+        grid-area: 1 / 1 / 2 / 4;
+        width: 60%;
+
+        h1 {
+            font-size: 2em;
+            color: black;
+        }
+
+        p {
+            font-size: 1em;
+            color: $grey-accent;
+        }
+    }
+
+    article {
+        img {
+            width: 80px;
+            height: 80px;
+        }
+
+        p {
+            font-size: 1em;
+            color: $grey-accent;
+            width: 90%;
+        }
+    }
+}
+
+.examples {
+    display: grid;
+    grid-template-rows: 0.2fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    background-color: #ffffff;
+    margin: 5%;
+    margin-top: 0;
+
+    .examples-title {
+        grid-area: 1 / 1 / 2 / 3;
+        width: 60%;
+
+        h1 {
+            font-size: 2em;
+            color: black;
+        }
+
+        p {
+            font-size: 1em;
+            color: $grey-accent;
+        }
+    }
+
+    article {    
+        margin: 5%;  
+        img {
+            width: 100%;
+            height: 70%;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
+        }
+    }
+}
+
+.gallery {
+    display: grid;
+    grid-template-rows: 0.4fr 1fr 1fr;
+    background-color: #ffffff;
+    margin: 5%;
+    margin-top: 0;
+
+    .gallery-title {
+        grid-area: 1 / 1 / 2 / 2;
+        width: 60%;
+        text-align: center; // not being applied from article definition?
+
+        h1 {
+            font-size: 2em;
+            color: black;
+        }
+    }
+
+    .slideshow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            // box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4); // not working with 'object-fit: contain;'
+            animation: slideShow 3s infinite;
+        
+            &:nth-child(1) { animation-delay: 0s; }
+            &:nth-child(2) { animation-delay: 1s; }
+            &:nth-child(3) { animation-delay: 2s; }
+
+            @keyframes slideShow {
+                0%   { opacity: 0; }
+                20%  { opacity: 1; }
+                33%  { opacity: 1; }
+                53%  { opacity: 0; }
+                100% { opacity: 0; }
+            }
+        }
+    }
+
+    article {      
+        text-align: left;
+        padding-left: 5%;
+
+        h4 {
+            color: $primary-color;
+        }
+
+        button {
+            background-color: $primary-color;
+            color: #fff;
+            border: none;
+            height: 80px;
+            width: 200px;
+            font-size: 1.5em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    }
+}
+
+.contact {
+    display: grid;
+    grid-template-rows: 5vh 3vh 30vh 25vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #ffffff;
+    margin: 5%;
+    margin-top: 0;
+
+    .contact-title {
+        grid-area: 1 / 1 / 2 / 4;
+        width: 60%;
+
+        h1 {
+            font-size: 2em;
+            color: black;
+        }
+
+        p {
+            font-size: 1em;
+            color: $grey-accent;
+        }
+    }
+
+    .contact-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-area: 2 / 1 / 3 / 4;
+        width: 90%;
+        justify-self: center;
+        text-align: center;
+
+        div {
+            justify-self: center;
+            text-align: center;
+            width: 80%;
+        }
+    }
+
+    form {
+        grid-area: 4 / 1 / 5 / 5;
+
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        width: 80%;
+        height: 65%;
+        margin-left: 10%;
+
+        input {
+            border: none;
+            border-bottom: 1px solid $grey-accent;
+            width: 100%;
+            margin-bottom: 1.5vh;
+            font-size: 1em;
+        }
+
+        input#message {
+            height: 8vh;
+        }
+
+        button {
+            background-color: $primary-color;
+            color: #fff;
+            border: none;
+            height: 4vh;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    }
+
+    iframe {
+        grid-area: 3 / 1 / 4 / 5;
+        width: 80%;
+        margin-left: 10%;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    }
+}
+
+.footer {
+    display: grid;
+    grid-template-rows: 1fr 4.2fr 0.8fr;
+    grid-template-columns: 1fr;
+    background-color: #ffffff;
+
+    .footer-banner {
+        height: 5vh;
+        background-color: $secondary-color;
+    }
+
+    .footer-details {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        background-color: $primary-highlight;
+        padding-top: 2vh;
+        padding-left: 3%;
+        padding-right: 3%;
+        // padding: 5% 10%;
+
+        article {
+            height: 100%;
+            color: #fff;
+            text-align: left;
+            overflow: hidden;
+
+            a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 0.9em;
+            }
+
+            hr {
+                width: 8vw;
+                margin-right: 100%;
+                margin-top: -1.2vh;
+                border-color: $primary-color;
+            }
+        
+        }
+    }
+
+    .footer-legal {
+        background-color: $tertiary-color;
+        height: 5vh; // added buffer for bottom nav-bar
+
+        p {
+            color: #fff;
+            text-align: center;
+        }
+    }
+}
