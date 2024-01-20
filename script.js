@@ -6,3 +6,5 @@ window.addEventListener('scroll', function() {
         nav.classList.remove('scrolled')
     }
 })
+
+// Adding comment for commit change
